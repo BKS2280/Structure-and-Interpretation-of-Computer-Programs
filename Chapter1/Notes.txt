@@ -1,0 +1,51 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::                         NOTES ON 1.1-THE ELEMENTS OF PROGRAMMING                               ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 1) READ THE FAMOUS PAPER BY JOHN MCCARTHY							  ::
+::	RECUSRSIVE FUNCTIONS OF SYMBOLIC EXPRESSIONS AND THEIR COMPUTATION BY MACHINE             ::
+:: 2)EVERY POWERFUL LANGUAGE HAS THREE MECHANISM:						  ::
+::	PRIMITIVE EXPRESSION									  ::
+::	MEANS OF COMBINATION									  ::
+::	MEANS OF ABSTRACTION									  ::
+:: 3)PRIMITIVE EXPRESSION IN LISP:								  ::
+::	(OPERATOR OPERAND1 OPERAND2 ..)								  ::
+::	(+ 3 4 5)										  ::
+:: 4)MEANS OF COMBINATION IN LISP:								  ::
+::	(+ (+ 3 4) (* 3 4)) -> HERE PREMETIVES ARE COMBINED TO FORM COMBINATIONS		  ::
+:: 5)MEANS OF ABSTRACTION IN LISP:								  ::
+::	(DEFINE C 2) -> DEFINE IS THE SIMPLEST MEANS OF ABSTRACTIONS				  ::
+::	(DEFINE (<NAME> <FORMAL PARAMETERS>)							  ::
+::	   <BODY>)										  ::
+:: 6)HOW LISP EVALUATE?										  ::
+::	SUBSTITUTION MODEL:									  ::
+::		TO APPLY A COMPOUND PROCEDURE TO ARGUMENTS, EVALUATE THE BODY			  ::
+::		OF THE PROCEDURE WITH EACH FORMAL PARAMETERS REPLACED BY THE			  ::
+::		CORRESPONDING ARGUMENT.								  ::
+::	THIS GIVESUS TWO WAY TO EVALUATE:							  ::
+::		APPLICATIVE ORDER EVALUATION:							  ::
+::			EVALUATE THE ARGUMENT AND THEN APPLY THE PROCEDURE			  ::
+::		NORMAL ORDER EVALUATION:							  ::
+::			FULLY EXPAND TO PRIMITIVES AND THEN REDUCE				  ::
+::												  ::
+::	LISP USES APPLICATIVE-ORDER EVALUATION							  ::
+:: 7)CONDITIONALS AND PREDICATES								  ::
+::	COND:										          ::
+::	(COND (<P1> <E1>)									  ::
+::	      (<P2> <E2>)									  ::
+::	      ...										  ::
+::	      (<PN> <EN>)) -> AT THE END WE CAN USE (ELSE EXPRESSION)				  ::
+::	IF:											  ::
+::	(IF <PREDICATE> <CONSEQUENT> <ALTERNATIVE>)						  ::
+::	PREDICATES EVALUATES TO TRUE OR FALSE SOME PREDICATES ARE:				  ::
+::	(AND <E1> .. <EN>)									  ::
+::	(OR <E1> .. <EN>)									  ::
+::	(NOT <E>)										  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
+::												  ::
