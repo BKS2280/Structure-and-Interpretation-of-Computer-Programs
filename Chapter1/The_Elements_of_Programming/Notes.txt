@@ -1,0 +1,82 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::                         NOTES ON 1.1-THE ELEMENTS OF PROGRAMMING                               ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 1) READ THE FAMOUS PAPER BY JOHN MCCARTHY							  ::
+::	RECUSRSIVE FUNCTIONS OF SYMBOLIC EXPRESSIONS AND THEIR COMPUTATION BY MACHINE             ::
+:: 2)EVERY POWERFUL LANGUAGE HAS THREE MECHANISM:						  ::
+::	PRIMITIVE EXPRESSION									  ::
+::	MEANS OF COMBINATION									  ::
+::	MEANS OF ABSTRACTION									  ::
+:: 3)PRIMITIVE EXPRESSION IN LISP:								  ::
+::	(OPERATOR OPERAND1 OPERAND2 ..)								  ::
+::	(+ 3 4 5)										  ::
+:: 4)MEANS OF COMBINATION IN LISP:								  ::
+::	(+ (+ 3 4) (* 3 4)) -> HERE PREMETIVES ARE COMBINED TO FORM COMBINATIONS		  ::
+:: 5)MEANS OF ABSTRACTION IN LISP:								  ::
+::	(DEFINE C 2) -> DEFINE IS THE SIMPLEST MEANS OF ABSTRACTIONS				  ::
+::	(DEFINE (<NAME> <FORMAL PARAMETERS>)							  ::
+::	   <BODY>)										  ::
+:: 6)HOW LISP EVALUATE?										  ::
+::	SUBSTITUTION MODEL:									  ::
+::		TO APPLY A COMPOUND PROCEDURE TO ARGUMENTS, EVALUATE THE BODY			  ::
+::		OF THE PROCEDURE WITH EACH FORMAL PARAMETERS REPLACED BY THE			  ::
+::		CORRESPONDING ARGUMENT.								  ::
+::	THIS GIVESUS TWO WAY TO EVALUATE:							  ::
+::		APPLICATIVE ORDER EVALUATION:							  ::
+::			EVALUATE THE ARGUMENT AND THEN APPLY THE PROCEDURE			  ::
+::		NORMAL ORDER EVALUATION:							  ::
+::			FULLY EXPAND TO PRIMITIVES AND THEN REDUCE				  ::
+::												  ::
+::	LISP USES APPLICATIVE-ORDER EVALUATION							  ::
+:: 7)CONDITIONALS AND PREDICATES								  ::
+::	COND:										          ::
+::	(COND (<P1> <E1>)									  ::
+::	      (<P2> <E2>)									  ::
+::	      ...										  ::
+::	      (<PN> <EN>)) -> AT THE END WE CAN USE (ELSE EXPRESSION)				  ::
+::	IF:											  ::
+::	(IF <PREDICATE> <CONSEQUENT> <ALTERNATIVE>)						  ::
+::	PREDICATES EVALUATES TO TRUE OR FALSE SOME PREDICATES ARE:				  ::
+::	(AND <E1> .. <EN>)									  ::
+::	(OR <E1> .. <EN>)									  ::
+::	(NOT <E>)										  ::
+:: 8)BLACK-BOX ABSTRACTION								          ::
+::	A PROCEDURE DEFINITION BE ABLE TO SUPPRESS DETAILS SO THAT IT CAN BE OBTAINED BY OTHER	  ::
+::	PROGRAMMERS AS A BLACK BOX WHOSE IMPLEMENTATION WE ASSIGN TO ITS OPERATION, MEANING	  ::
+::	WE ONLY FOCUS ON WHAT IT DOES NOT HOW IT DOES.						  ::
+::	DECOMPOSITION OF SQRT PROCEDURE TO SUBPROBLEMS USING THE RECURSIVE DEFINITION		  ::
+::				SQRT								  ::
+::				 |								  ::
+::			     SQRT-ITER								  ::
+::			      /	    \								  ::
+::		    GOOD-ENOUGH?   IMPROVE							  ::
+::		     /	      \	       \							  ::
+::               SQUARE      ABS      AVERAGE							  ::
+::												  ::
+::	THIS KIND OF DECOMPOSITION IS DIFFERENT FROM NORMAL DECOMPOSITION WHERE ONE JUST DIVIDE   ::
+::	SOMETHING LIKE LINES OF CODE 40 --> 10 - 10 - 10 - 10) OR NUMBER OF CHARACTERS. THE       ::
+::	DECOMPOSITION HERE IS BREAKING IT INTO IDENTIFIABLE TASK WHICH CAN BE TAKEN AS A SINGLE   ::
+::	ENTITY THAT DOES A SINGLE WORK -- BALCK-BOX.                                              ::
+::	THE PROCEDURE DEFINITION BINDS THE FORMAL PARAMETERS. a BOUND VARIABLE HAS A SCOPE OF     ::
+::	THE PROCEDURE BODY.THIS ALLOW US TO DIFFERENTIATE DEFINITION FROM PARAMETERS, THAT'S      ::
+::	HOW WE CREATE A BLACK BOX AROUND THE DEFINITION.					  ::
+::		  _____________________								  ::
+::	x	 |square	       | y							  ::
+::	-------->|		       |--------->   						  ::
+::		 |______binds:x________|							  ::
+::												  ::
+::												  ::
+::		  _____________________								  ::
+::	guess,x	 |good-enough?	       |#t OR #f						  ::
+::	-------->|		       |---------->						  ::
+::		 |_______binds:guess,x_|							  ::
+::												  ::
+::												  ::
+::												  ::
+::	THE FREEDOM OF X BEING REPLACABLE INSIDE THE SCOPE OF THE DEFINITION ALLOW US TO NOT 	  ::
+::	CONFUSE THE SYSTEM WHICH X ITS REFERING TO WHICH IS HOW WE ACHIEVE THE INDEPENDENCE	  ::
+::      AND PROVIDES US A WAY TO TREAT THE PROCEDURE AS BLACK-BOX.				  ::
+::	MOREOVER THE +,-,*,ABS,> ARE FREE VARIABLE, WHICH IF AVAILABLE EVERYWHERE AND UNLESS	  ::
+::	ITS CHANGED IN THE GLOBAL ENVIRONMENT ITS OPERATION IS SAME EVERYWHERE. IF X WERE FREE	  ::
+::	THEN THE COMPUTER DOESN'T KNOW WHICH X ITS TALKING ABOUT IN SQUARE AND IN GOOD-ENOUGH?	  ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
